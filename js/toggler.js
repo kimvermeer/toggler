@@ -1,27 +1,23 @@
 function validColor (color) {
-    if(!color) { return; }
+    if (!color) { return; }
     return /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(color);
 }
 
-function colorLuminance(hex, lum) {
-    hex = String(hex).replace(/[^0-9a-f]/gi, '');
-
-    if (hex.length < 6) {
-        hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-    }
-
-    lum = lum || 0;
-
-    var rgb = '#';
+function hexToRgba(hex, opacity) {
     var c;
 
-    for (var i = 0; i < 3; i++) {
-        c = parseInt(hex.substr(i * 2, 2), 16);
-        c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-        rgb += ('00' + c).substr(c.length);
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+        c = hex.substring(1).split('');
+
+        if (c.length === 3) {
+            c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+
+        c = '0x' + c.join('');
+        return 'rgba(' + [(c>>16) & 255, (c>>8) & 255, c & 255].join(',') + ',' + opacity + ')';
     }
 
-    return rgb;
+    throw new Error('Hex not valid');
 }
 
 define([
@@ -50,7 +46,7 @@ define([
                 input.prop('checked', checked);
 
                 if (checked && validColor(background)) {
-                    toggle.css('background-color', colorLuminance(background, 0.3))
+                    toggle.css('background-color', hexToRgba(background, '.4'))
                           .find('.toggle-dot')
                           .css('background-color', background);
                 } else {
