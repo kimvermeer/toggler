@@ -1,3 +1,10 @@
+/**
+ * toggler.js <https://github.com/kimvermeer/toggler>
+ * Copyright (c) 2016 Kim Vermeer
+ * @author Kim Vermeer <kimmeeeeeh@gmail.com>
+ * @license MIT License <https://github.com/kimvermeer/toggler/blob/master/LICENSE>
+ */
+
 function validColor (color) {
     if (!color) { return; }
     return /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(color);
