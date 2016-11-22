@@ -1,4 +1,5 @@
 function validColor (color) {
+    if(!color) { return; }
     return /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(color);
 }
 
@@ -26,43 +27,40 @@ function colorLuminance(hex, lum) {
 define([
     'jquery'
 ], function($){
-    (function( $ ) {
-        $.fn.toggler = function () {
-            return this.each(function () {
-                var input = $(this);
-                var checked = input.prop('checked');
-                var position = input.data('toggle-position') || '';
-                var background = input.data('toggle-color') || '';
-                var toggle = $('<div class="toggle"><div class="toggle-dot"></div></div>');
+    $.fn.toggler = function () {
+        return this.each(function () {
+            var input = $(this);
+            var checked = input.prop('checked');
+            var position = input.data('toggle-position');
+            var background = input.data('toggle-color');
+            var toggle = $('<div class="toggle"><div class="toggle-dot"></div></div>');
 
-                input.addClass('toggler');
+            input.addClass('toggler');
 
-                input.hide()
-                     .wrap('<div class="toggle-wrapper"></div>')
-                     .after(toggle);
+            input.hide()
+                 .wrap('<div class="toggle-wrapper"></div>')
+                 .after(toggle);
 
-                if (position.length) {
-                    input.closest('.toggle-wrapper').addClass(position);
+            if (position) {
+                input.closest('.toggle-wrapper').addClass(position);
+            }
+
+            toggle.on('click', function () {
+                checked = !checked;
+                input.prop('checked', checked);
+
+                if (checked && validColor(background)) {
+                    toggle.css('background-color', colorLuminance(background, 0.3))
+                          .find('.toggle-dot')
+                          .css('background-color', background);
+                } else {
+                    toggle.css('background-color', '')
+                          .find('.toggle-dot')
+                          .css('background-color', '');
                 }
-
-                toggle.on('click', function () {
-                    checked = !checked;
-                    input.prop('checked', checked);
-
-                    if (checked && validColor(background)) {
-                        toggle.css('background-color', colorLuminance(background, 0.3))
-                              .find('.toggle-dot')
-                              .css('background-color', background);
-                    } else {
-                        toggle.css('background-color', '')
-                              .find('.toggle-dot')
-                              .css('background-color', '');
-                    }
-                });
             });
-        };
-
-    }( $ ));
+        });
+    };
 
     return $;
 });
