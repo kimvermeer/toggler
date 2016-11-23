@@ -1,4 +1,4 @@
-.toggle-wrapper {
+.toggler--toggle-wrapper {
     position: relative;
     top: 7px;
 
@@ -6,21 +6,26 @@
     width: 50px;
     height: 23px;
 
-    &.right {
+    -webkit-border-radius: 34px;
+       -moz-border-radius: 34px;
+            border-radius: 34px;
+    background-color: #fff;
+
+    &.toggler--right {
         float: right;
     }
 
-    &.left {
+    &.toggler--left {
         top: auto;
 
         float: left;
         margin-right: 10px;
     }
 
-    input.toggler:checked + .toggle {
+    input.toggler--toggler:checked + .toggler--toggle {
         background-color: #b5e9c2;
 
-        .toggle-dot {
+        .toggler--toggle-dot {
             background-color: #49c868;
 
             -webkit-transform: translateX(18px);
@@ -29,7 +34,7 @@
         }
     }
 
-    .toggle {
+    .toggler--toggle {
         position: absolute;
         top: 0;
         right: 0;
@@ -43,7 +48,7 @@
         -webkit-transition: 0.4s;
                 transition: 0.4s;
 
-        .toggle-dot {
+        .toggler--toggle-dot {
             position: absolute;
             bottom: 3px;
             left: 3px;

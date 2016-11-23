@@ -45,16 +45,18 @@ function hexToRgba(hex, opacity) {
             var checked = input.prop('checked');
             var position = input.data('toggle-position');
             var background = input.data('toggle-color');
-            var toggle = $('<div class="toggle"><div class="toggle-dot"></div></div>');
+            var toggle = $('<div class="toggler--toggle">' +
+                           '<div class="toggler--toggle-dot"></div></div>');
 
-            input.addClass('toggler');
+            input.addClass('toggler--toggler');
 
             input.hide()
-                 .wrap('<div class="toggle-wrapper"></div>')
+                 .wrap('<div class="toggler--toggle-wrapper"></div>')
                  .after(toggle);
 
             if (position) {
-                input.closest('.toggle-wrapper').addClass(position);
+                input.closest('.toggler--toggle-wrapper')
+                     .addClass('toggler--' + position);
             }
 
             toggle.on('click', function () {
@@ -63,11 +65,11 @@ function hexToRgba(hex, opacity) {
 
                 if (checked && validColor(background)) {
                     toggle.css('background-color', hexToRgba(background, '.4'))
-                          .find('.toggle-dot')
+                          .find('.toggler--toggle-dot')
                           .css('background-color', background);
                 } else {
                     toggle.css('background-color', '')
-                          .find('.toggle-dot')
+                          .find('.toggler--toggle-dot')
                           .css('background-color', '');
                 }
             });
