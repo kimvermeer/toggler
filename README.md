@@ -6,6 +6,13 @@ Toggler.js will change your checkboxes into beautiful toggles.
 
 ## Usage
 
+Install with npm or bower
+
+```npm install toggler.js```
+
+```bower install toggler.js```
+
+
 ### HTML
 You can add optional parameters to style the toggles
 
