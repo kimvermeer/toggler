@@ -28,4 +28,4 @@ $('input[type="checkbox"]).toggler();
 That's it!
 
 
-![alt text](https://raw.githubusercontent.com/kimvermeer/toggler/master/toggler.gif =150x "Toggler Demo")
+<img src="https://raw.githubusercontent.com/kimvermeer/toggler/master/toggler.gif" height="150" alt="Toggler Demo">
