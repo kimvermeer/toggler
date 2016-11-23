@@ -1,0 +1,27 @@
+{
+  "name": "toggler.js",
+  "description": "Replace checkboxes with toggles",
+  "version": "1.0.1",
+  "main": [
+    "js/toggler.js",
+    "css/toggler.css",
+    "scss/toggler.scss"
+  ],
+  "authors": [
+    "Kim Vermeer"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "toggler",
+    "checkbox",
+    "toggles"
+  ],
+  "homepage": "https://github.com/kimvermeer/toggler",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
