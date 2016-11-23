@@ -13,7 +13,7 @@ You can add optional parameters to style the toggles
 	- left
 	- right
 
-- toggle-color (optional)
+- toggle-color (optional) (default: green)
 	- \#f00
 
 ```
@@ -28,4 +28,4 @@ $('input[type="checkbox"]).toggler();
 That's it!
 
 
-![alt text](https://raw.githubusercontent.com/kimvermeer/toggler/master/toggler_demo.png "Toggler Demo")
+![alt text](https://raw.githubusercontent.com/kimvermeer/toggler/master/toggler.gif =150x "Toggler Demo")
